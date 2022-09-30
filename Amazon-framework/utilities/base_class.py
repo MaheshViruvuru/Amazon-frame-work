@@ -19,3 +19,4 @@ class BasePage:
         fil_handler.setFormatter(formatter)
         logger.addHandler(fil_handler)
         logger.setLevel(logging.DEBUG)
+        return logger

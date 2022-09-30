@@ -4,11 +4,13 @@ from utilities.base_class import BasePage
 
 
 @pytest.mark.usefixtures('navigate_to_amazon')
-class TestAmazonHomePage:
+class TestAmazonHomePage(BasePage):
     def test_navigate_amazon_home_page(self):
+        log = self.get_logger()
         amazon_home_page = AmazonHomePage(self.driver)
         amazon_logo = amazon_home_page.get_amazon_logo()
         assert amazon_logo.is_displayed(), "Amazon logo is not displayed"
+        log.info("Opened Amazon successfully")
         print("Log in successful")
         assert amazon_home_page.get_all_headers_menu_list(), "Unable to get menu headers"
 

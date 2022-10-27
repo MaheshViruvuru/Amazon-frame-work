@@ -21,3 +21,9 @@ class TestAmazonHomePage(BasePage):
     def test_check_change_language_drop_down(self):
         amazon_home_page = AmazonHomePage(self.driver)
         print(amazon_home_page.check_change_language_drop_down())
+
+    def test_get_amazon_logo(self):
+        amazon_home_page = AmazonHomePage(self.driver)
+        amazon_logo = amazon_home_page.get_amazon_logo()
+        with open('amazon_logo.png', 'wb') as file:
+            file.write(amazon_logo.screenshot_as_png)

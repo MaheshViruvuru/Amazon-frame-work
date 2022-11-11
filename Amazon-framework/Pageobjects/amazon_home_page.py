@@ -20,6 +20,7 @@ class AmazonHomePage(BasePage):
     nav_to_cart = (By.XPATH, '//a[@id="nav-cart"]')
     languages_list = (By.XPATH, '//span[@class="nav-text"]//span[1]')
 
+    # To get amazon logo
     def get_amazon_logo(self):
         return self.driver.find_element(*AmazonHomePage.amazon_logo)
 

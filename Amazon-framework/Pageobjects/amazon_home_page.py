@@ -25,13 +25,14 @@ class AmazonHomePage(BasePage):
         return self.driver.find_element(*AmazonHomePage.amazon_logo)
 
     def get_all_headers_menu_list(self):
-        headers = ['Trending', 'Digital Content And Devices', 'Shop By Department', 'Programs & Features', 'Help & Settings']
+        headers = ['Trending', 'Digital Content And Devices', 'Shop By Category', 'Programs & Features', 'Help & Settings']
 
         self.driver.find_element(*AmazonHomePage.menu).click()
         headers_list_in_menu = self.driver.find_elements(*AmazonHomePage.menu_list)
         headers_list = []
         for header in headers_list_in_menu:
             headers_list.append(header.text)
+        print(headers_list)
         assert headers == headers_list, "menu headers are not as expected"
         return True
 

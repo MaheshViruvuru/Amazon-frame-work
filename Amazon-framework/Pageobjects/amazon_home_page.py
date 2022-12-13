@@ -12,6 +12,7 @@ class AmazonHomePage(BasePage):
     amazon_logo = (By.XPATH, '//a[@id="nav-logo-sprites"]')
     menu = (By.XPATH, '//a[@id="nav-hamburger-menu"]')
     menu_list = (By.XPATH, '//ul[@data-menu-id="1"]//div[@class="hmenu-item hmenu-title "]')
+    menu_close_button = (By.XPATH, '//div[@class="nav-sprite hmenu-close-icon"]')
     select_your_location = (By.XPATH, '//div[@id="glow-ingress-block"]//span')
     nav_belt_search_bar = (By.XPATH, '//form[@id="nav-search-bar-form"]')
     choose_language_button = (By.XPATH, '//a[@aria-label="Choose a language for shopping."]')
@@ -34,6 +35,7 @@ class AmazonHomePage(BasePage):
             headers_list.append(header.text)
         print(headers_list)
         assert headers == headers_list, "menu headers are not as expected"
+        self.driver.find_element(*AmazonHomePage.menu_close_button).click()
         return True
 
     def check_home_page_navigation_belt(self):

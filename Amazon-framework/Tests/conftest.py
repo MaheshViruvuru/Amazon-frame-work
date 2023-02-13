@@ -1,10 +1,11 @@
 import pytest
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 
-driver = webdriver.Chrome(executable_path='C:\Drivers\chromedriver_win32\chromedriver.exe')
+driver = webdriver.Chrome(ChromeDriverManager().install())
 
 
-@pytest.fixture()
+@pytest.fixture(scope='class')
 def navigate_to_amazon(request):
     """Fixture to navigate to amazon web page"""
     driver.maximize_window()

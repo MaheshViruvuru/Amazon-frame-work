@@ -65,14 +65,16 @@ class AmazonHomePage(BasePage):
         time.sleep(15)
         actions = ActionChains(self.driver)
         choose_lang_button = self.driver.find_element(*AmazonHomePage.choose_language_button)
-        actions.move_to_element(choose_lang_button)
+        actions.move_to_element(choose_lang_button).perform()
+        time.sleep(5)
         languages_list = self.driver.find_elements(*AmazonHomePage.languages_list)
         languages = []
+        expected_languages = ['English', 'हिन्दी', 'தமிழ்', 'తెలుగు', 'ಕನ್ನಡ', 'മലയാളം', 'বাংলা', 'मराठी']
         for language in languages_list:
             languages.append(language.text)
             if len(languages) >= 8:
                 break
-
+        assert languages == expected_languages, "languages are not as expected"
         return languages
 
 

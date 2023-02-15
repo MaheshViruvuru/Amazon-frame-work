@@ -24,7 +24,7 @@ class AmazonHomePage(BasePage):
         return self.driver.find_element(*AmazonHomePage.amazon_logo)
 
     def get_all_headers_menu_list(self):
-        headers = ['Trending', 'Digital Content And Devices', 'Shop By Department', 'Programs & Features', 'Help & Settings']
+        headers = ['Trending', 'Digital Content And Devices', 'Shop By Category', 'Programs & Features', 'Help & Settings']
 
         self.driver.find_element(*AmazonHomePage.menu).click()
         headers_list_in_menu = self.driver.find_elements(*AmazonHomePage.menu_list)
@@ -32,6 +32,7 @@ class AmazonHomePage(BasePage):
         for header in headers_list_in_menu:
             headers_list.append(header.text)
         assert headers == headers_list, "menu headers are not as expected"
+        self.driver.refresh()
         return True
 
     def check_home_page_navigation_belt(self):
@@ -40,6 +41,7 @@ class AmazonHomePage(BasePage):
         for i in range(len(select_location_block_texts)):
             assert select_location_block_texts[i].text == select_location_block_texts_list[i], \
                 "Element mismatch"
+        time.sleep(2)
         search_bar = self.driver.find_element(*AmazonHomePage.nav_belt_search_bar)
         choose_lang_button = self.driver.find_element(*AmazonHomePage.choose_language_button)
         sign_in_button = self.driver.find_element(*AmazonHomePage.nav_to_sign_in_page)

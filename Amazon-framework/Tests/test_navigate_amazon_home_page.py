@@ -28,4 +28,8 @@ class TestAmazonHomePage(BasePage):
         with open('amazon_logo.png', 'wb') as file:
             file.write(amazon_logo.screenshot_as_png)
 
+<<<<<<< HEAD
 # trying new commit
+=======
+# trying new commit
+>>>>>>> master

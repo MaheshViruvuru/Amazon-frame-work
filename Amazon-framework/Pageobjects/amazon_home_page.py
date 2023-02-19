@@ -75,9 +75,13 @@ class AmazonHomePage(BasePage):
             if len(languages) >= 8:
                 break
         assert languages == expected_languages, "languages are not as expected"
+<<<<<<< HEAD
+        return languages
+=======
         return languages
 
 
 
 
 
+>>>>>>> master

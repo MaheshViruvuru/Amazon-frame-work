@@ -27,3 +27,5 @@ class TestAmazonHomePage(BasePage):
         amazon_logo = amazon_home_page.get_amazon_logo()
         with open('amazon_logo.png', 'wb') as file:
             file.write(amazon_logo.screenshot_as_png)
+
+# trying new commit

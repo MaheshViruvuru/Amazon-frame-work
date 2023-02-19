@@ -2,7 +2,9 @@ import inspect
 import logging
 import time
 from selenium import webdriver
-driver = webdriver.Chrome(executable_path='C:\Drivers\chromedriver_win32\chromedriver.exe')
+from webdriver_manager.chrome import ChromeDriverManager
+
+driver = webdriver.Chrome(ChromeDriverManager().install())
 
 
 class BasePage:

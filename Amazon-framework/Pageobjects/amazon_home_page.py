@@ -12,6 +12,7 @@ class AmazonHomePage(BasePage):
     amazon_logo = (By.XPATH, '//a[@id="nav-logo-sprites"]')
     menu = (By.XPATH, '//a[@id="nav-hamburger-menu"]')
     menu_list = (By.XPATH, '//ul[@data-menu-id="1"]//div[@class="hmenu-item hmenu-title "]')
+    menu_close_button = (By.XPATH, '//div[@class="nav-sprite hmenu-close-icon"]')
     select_your_location = (By.XPATH, '//div[@id="glow-ingress-block"]//span')
     nav_belt_search_bar = (By.XPATH, '//form[@id="nav-search-bar-form"]')
     choose_language_button = (By.XPATH, '//a[@aria-label="Choose a language for shopping."]')
@@ -20,6 +21,7 @@ class AmazonHomePage(BasePage):
     nav_to_cart = (By.XPATH, '//a[@id="nav-cart"]')
     languages_list = (By.XPATH, '//span[@class="nav-text"]//span[1]')
 
+    # To get amazon logo
     def get_amazon_logo(self):
         return self.driver.find_element(*AmazonHomePage.amazon_logo)
 
@@ -31,8 +33,9 @@ class AmazonHomePage(BasePage):
         headers_list = []
         for header in headers_list_in_menu:
             headers_list.append(header.text)
+        print(headers_list)
         assert headers == headers_list, "menu headers are not as expected"
-        self.driver.refresh()
+        self.driver.find_element(*AmazonHomePage.menu_close_button).click()
         return True
 
     def check_home_page_navigation_belt(self):
@@ -41,7 +44,6 @@ class AmazonHomePage(BasePage):
         for i in range(len(select_location_block_texts)):
             assert select_location_block_texts[i].text == select_location_block_texts_list[i], \
                 "Element mismatch"
-        time.sleep(2)
         search_bar = self.driver.find_element(*AmazonHomePage.nav_belt_search_bar)
         choose_lang_button = self.driver.find_element(*AmazonHomePage.choose_language_button)
         sign_in_button = self.driver.find_element(*AmazonHomePage.nav_to_sign_in_page)
@@ -63,17 +65,14 @@ class AmazonHomePage(BasePage):
         time.sleep(15)
         actions = ActionChains(self.driver)
         choose_lang_button = self.driver.find_element(*AmazonHomePage.choose_language_button)
-        actions.move_to_element(choose_lang_button)
+        actions.move_to_element(choose_lang_button).perform()
+        time.sleep(5)
         languages_list = self.driver.find_elements(*AmazonHomePage.languages_list)
         languages = []
+        expected_languages = ['English', 'हिन्दी', 'தமிழ்', 'తెలుగు', 'ಕನ್ನಡ', 'മലയാളം', 'বাংলা', 'मराठी']
         for language in languages_list:
             languages.append(language.text)
             if len(languages) >= 8:
                 break
-
+        assert languages == expected_languages, "languages are not as expected"
         return languages
-
-
-
-
-

@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 2023-02-15 16:48:06,679 : INFO : test_navigate_amazon_home_page : Opened Amazon successfully
 2023-02-15 16:52:23,902 : INFO : test_navigate_amazon_home_page : Opened Amazon successfully
 2023-02-15 16:57:53,117 : INFO : test_navigate_amazon_home_page : Opened Amazon successfully
 2023-02-15 17:00:12,318 : INFO : test_navigate_amazon_home_page : Opened Amazon successfully
 2023-02-15 17:07:30,062 : INFO : test_navigate_amazon_home_page : Opened Amazon successfully
+=======
+2023-02-13 18:33:28,609 : INFO : test_navigate_amazon_home_page : Opened Amazon successfully
+2023-02-13 18:35:45,702 : INFO : test_navigate_amazon_home_page : Opened Amazon successfully
+2022-12-01 12:00:34,439 : INFO : test_navigate_amazon_home_page : Opened Amazon successfully
+>>>>>>> master

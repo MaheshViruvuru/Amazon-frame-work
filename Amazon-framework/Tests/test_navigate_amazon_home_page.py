@@ -5,6 +5,7 @@ from utilities.base_class import BasePage
 
 @pytest.mark.usefixtures('navigate_to_amazon')
 class TestAmazonHomePage(BasePage):
+    @pytest.mark.sample
     def test_navigate_amazon_home_page(self):
         log = self.get_logger()
         amazon_home_page = AmazonHomePage(self.driver)
@@ -14,6 +15,7 @@ class TestAmazonHomePage(BasePage):
         print("Log in successful")
         assert amazon_home_page.get_all_headers_menu_list(), "Unable to get menu headers"
 
+    @pytest.mark.sample
     def test_home_page_navigation_belt(self):
         amazon_home_page = AmazonHomePage(self.driver)
         assert amazon_home_page.check_home_page_navigation_belt(), "Home page navigation belt is not as expected"

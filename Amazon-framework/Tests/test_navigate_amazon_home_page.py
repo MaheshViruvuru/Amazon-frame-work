@@ -28,3 +28,4 @@ class TestAmazonHomePage(BasePage):
         with open('amazon_logo.png', 'wb') as file:
             file.write(amazon_logo.screenshot_as_png)
 
+# just trying push error
